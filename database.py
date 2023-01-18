@@ -5,21 +5,19 @@ connection = sqlite3.connect('customer.db')
 
 cursor = connection.cursor()
 
-# to insert many records at the same time we create a variable called many_customer
-# in the dictionary many_customer, we can create several tupals (objects)
-many_customer = [
-    ('Pj', 'Watson', 'pw@gmail.com'),
-    ('Tim', 'Jones', 'bb@gmail.com'),
-    ('Sam', 'Anderson', 'hotgirl101@gmail.com'),
-]
+# here we are running a query to show everything in our customers database
+cursor.execute("SELECT * FROM customers")
 
-# we run the variable executemany and use the sql ? syntax
-# we then pass in our variable many_customer
-cursor.executemany(
-    "INSERT INTO customers VALUES(?, ?, ?)", many_customer)
+# we can then run several different commands
+# connection.fetcone() --> this will display the last record added to our database
+# connection.fetchmany(2) --> this will fetch two records in our database
+# connection.fetchall() --> this will fetch all the records in our database
 
+# we wrap our command in a print statement so we can see it in the terminal
 
-print("COMMAND EXECUTED CORRECTLY")
+print(cursor.fetchall())
+
+# print("COMMAND EXECUTED CORRECTLY")
 
 connection.commit()
 
