@@ -9,12 +9,14 @@ connection = sqlite3.connect('customer.db')
 # we establish a connection
 cursor = connection.cursor()
 
-# here we are defining the paramaters of our table. we want the datatype of each to be text
-cursor.execute("""CREATE TABLE customers (
-        first_name text,
-        last_name text,
-        email text
-)""")
+# we are just running sql commands now to insert a record into our customers database. remember that
+# sql commands are always capitalized
+cursor.execute(
+    "INSERT INTO customers VALUES('Mich', 'Onyekaba', 'm.o@gmail.com')")
+
+# here i just wrote a print statement to show that teh command was
+# executed correctly each time we run python3 database.py (remember database.py is the file name)
+print("COMMAND EXECUTED CORRECTLY")
 
 # here we are commiting so the table 'customers' is pushed into our database 'connection'
 connection.commit()
