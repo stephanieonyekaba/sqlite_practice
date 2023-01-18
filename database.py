@@ -5,8 +5,9 @@ connection = sqlite3.connect('customer.db')
 
 cursor = connection.cursor()
 
-# this is how we order a record. DESC means descending
-cursor.execute("""SELECT rowid, * FROM customers ORDER BY rowid DESC""")
+# this is how we query our database using AND/OR clause
+cursor.execute(
+    """SELECT rowid, * FROM customers WHERE last_name = 'Onyekaba' OR rowid = 3 """)
 
 items = cursor.fetchall()
 for item in items:
