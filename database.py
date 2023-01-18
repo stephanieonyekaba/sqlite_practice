@@ -5,13 +5,15 @@ connection = sqlite3.connect('customer.db')
 
 cursor = connection.cursor()
 
-# we can use the 'WHERE' clause to select certain paramaters for our records
-cursor.execute("SELECT * FROM customers WHERE last_name = 'Onyekaba' ")
+# this is how we update a record
+cursor.execute(
+    """UPDATE customers SET first_name = 'Alex' WHERE last_name = 'Anderson'  """)
+
+# here we query the database
+cursor.execute("""SELECT * FROM customers """)
 
 items = cursor.fetchall()
-
-for item in items:
-    print(item[0])
+print(items)
 
 
 # print("COMMAND EXECUTED CORRECTLY")
